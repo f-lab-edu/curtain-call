@@ -45,3 +45,13 @@
 
 - 좌석을 선점하는 방식으로 가야할지, 그냥 선착순 티켓만 발급하는 방식으로 가야할지 정해야함.
 - 좌석 관련 동시성 처리
+
+## UI
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="assets/signup.png" width="18%" alt="이미지1">
+  <img src="assets/login.png" width="18%" alt="이미지2">
+  <img src="assets/main.png" width="18%" alt="이미지3">
+  <img src="assets/detail.png" width="18%" alt="이미지4">
+  <img src="assets/reservation.png" width="18%" alt="이미지5">
+</div>
