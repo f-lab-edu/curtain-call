@@ -1,0 +1,81 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# 로깅 설정
+logging:
+  level:
+    root: INFO
+    com.curtaincall: DEBUG
+    # MyBatis SQL 로그
+    com.curtaincall.mapper: DEBUG
+    # Spring Security 로그
+    org.springframework.security: DEBUG
+    # SQL 로그
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    # HikariCP 로그
+    com.zaxxer.hikari: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log
+
+# MyBatis 설정
+mybatis:
+  # Mapper XML 파일 위치
+  mapper-locations: classpath:mapper/**/*.xml
+  # 타입 별칭 패키지
+  type-aliases-package: com.example.ticketbooking.domain
+  # MyBatis 설정
+  configuration:
+    # 카멜케이스 매핑 (DB: user_name → Java: userName)
+    map-underscore-to-camel-case: true
+    # NULL 값 처리
+    jdbc-type-for-null: NULL
+    # 캐시 사용
+    cache-enabled: false
+    # 지연 로딩
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    # 로그 출력
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    # 디폴트 실행 타임아웃
+    default-statement-timeout: 30
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 20000
+      auto-commit: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/curtain_call_db
+    username: user
+    password: 1234
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
