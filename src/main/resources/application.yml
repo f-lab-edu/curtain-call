@@ -32,7 +32,7 @@ mybatis:
   # Mapper XML 파일 위치
   mapper-locations: classpath:mapper/**/*.xml
   # 타입 별칭 패키지
-  type-aliases-package: com.example.ticketbooking.domain
+  type-aliases-package: com.curtaincall.domain
   # MyBatis 설정
   configuration:
     # 카멜케이스 매핑 (DB: user_name → Java: userName)

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-curtain-call
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234!
+      MYSQL_DATABASE: curtain_call_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234!
+    volumes:
+      - mysql-data:/var/lib/mysql
+#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # 초기 SQL 스크립트 (선택사항)
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+volumes:
+  mysql-data:
