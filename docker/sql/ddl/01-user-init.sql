@@ -5,7 +5,8 @@ CREATE TABLE USERS
     EMAIL      VARCHAR(50)            NOT NULL,
     PASSWORD   VARCHAR(80)            NOT NULL,
     CREATED_AT DATETIME DEFAULT NOW() NOT NULL,
-    UPDATED_AT DATETIME               NULL
+    UPDATED_AT DATETIME               NULL,
+    UNIQUE KEY idx_users_email (EMAIL)
 ) charset = 'utf8mb4';
 
 CREATE INDEX idx_users_email ON USERS (EMAIL);
