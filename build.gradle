@@ -25,24 +25,24 @@ repositories {
 
 dependencies {
     //Web
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-web')
 
     //MyBatis
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+    implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4')
 
     //MySql
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly('com.mysql:mysql-connector-j')
 
     //Lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok')
 
     // Test
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
-    testImplementation 'org.springframework.security:spring-security-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4')
+    testImplementation('org.springframework.security:spring-security-test')
+    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
 }
 
 tasks.named('test') {
