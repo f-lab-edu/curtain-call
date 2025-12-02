@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends UserRepository {
 
-    boolean existsByEmail(String email);
+    boolean existByEmail(String email);
 
     void save(UserEntity entity);
 

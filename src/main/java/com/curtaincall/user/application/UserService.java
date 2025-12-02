@@ -24,11 +24,12 @@ public class UserService {
      */
     @Transactional
     public void signUp(UserSignUpRequest request) {
-        if (userRepository.existsByEmail(request.email())) {
+        User user = new User(request.name(), request.email(), request.password());
+
+        if (userRepository.existByEmail(user.getEmail())) {
             throw new DuplicateEmailException();
         }
 
-        User user = new User(request.name(), request.email(), request.password());
         UserEntity entity = new UserEntity(user.getName(), user.getEmail(), passwordManager.encrypt(user.getPassword()));
 
         userRepository.save(entity);

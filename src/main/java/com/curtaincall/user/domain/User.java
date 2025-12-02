@@ -23,6 +23,9 @@ public class User {
         validateContainsWhiteSpace(name);
         validateEmail(email);
         validatePassword(password);
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     private void validateEmail(String email) {
