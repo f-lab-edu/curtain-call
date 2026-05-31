@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.curtaincall.user.mapper.UserMapper">
+
+    <insert id="insert" parameterType="com.curtaincall.user.domain.User"
+            useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO users (name, email, password, role, balance)
+        VALUES (#{name}, #{email}, #{password}, #{role}, #{balance})
+    </insert>
+
+    <select id="existsByEmail" resultType="boolean">
+        SELECT EXISTS (SELECT 1 FROM users WHERE email = #{email})
+    </select>
+
+    <select id="findByEmail" resultType="com.curtaincall.user.domain.User">
+        SELECT user_id, name, email, password, role, balance, created_at, updated_at
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+</mapper>
