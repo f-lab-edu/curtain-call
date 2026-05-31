@@ -110,7 +110,7 @@ erDiagram
     TICKETS {
         bigint TICKET_ID PK
         bigint RESERVATION_ID FK
-        bigint SEAT_ID FK UK "UNIQUE: 좌석당 1티켓(동시성 방어선)"
+        bigint SEAT_ID FK,UK "좌석당 1티켓 - 동시성 방어선"
         int PRICE "결제 시점 좌석 금액 스냅샷"
         datetime CREATED_AT
         datetime UPDATED_AT
