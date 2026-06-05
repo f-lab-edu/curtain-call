@@ -68,6 +68,23 @@ class AuthIntegrationTest {
     }
 
     @Test
+    @DisplayName("로그인 시 기존 세션이 있으면 세션 고정 보호를 위해 세션 ID를 재발급한다")
+    void loginRotatesSessionIdWhenSessionExists() throws Exception {
+        signup("fixation@example.com");
+        MockHttpSession existingSession = new MockHttpSession();
+        String oldSessionId = existingSession.getId();
+
+        Map<String, Object> login = Map.of("email", "fixation@example.com", "password", "password123");
+        mockMvc.perform(post("/auth/login")
+                        .session(existingSession)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(login)))
+                .andExpect(status().isOk());
+
+        assertThat(existingSession.getId()).isNotEqualTo(oldSessionId);
+    }
+
+    @Test
     @DisplayName("잘못된 비밀번호로 로그인하면 401과 일반 메시지를 반환한다")
     void loginWithWrongPasswordReturns401() throws Exception {
         signup("wrong@example.com");
